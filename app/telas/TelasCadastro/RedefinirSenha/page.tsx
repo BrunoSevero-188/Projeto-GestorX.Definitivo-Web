@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Logo from "@/public/Logo/GESTORX.svg";
+import Logo from "@/public/Logo/GestorXpressLogo.svg";
 import { InputandLabel } from "@/components/inputandLabel";
 import LinkInfo from "@/components/linkInfo";
 import { Button } from "@/components/button";
@@ -22,12 +22,12 @@ export default function RedefinirSenha() {
         <div className={styleEstrutura.containerCabecalho}>
           <Link href="/" className={styleEstrutura.containerLinkLogo}>
             <Image
-              className={styleEstrutura.containerImageLogo}
-              src={Logo}
-              alt="Logo"
-              width={200}
-              height={300}
-            />
+            className={styleEstrutura.containerImagem}
+            src={Logo}
+            alt="Logo"
+            width={200}
+            height={300}
+          />
           </Link>
           <h1 className={styleEstrutura.tituloCabecalho}>Redefinir Senha</h1>
         </div>
