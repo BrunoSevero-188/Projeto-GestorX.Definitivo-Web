@@ -1,8 +1,8 @@
 .containerBody {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: #f8fafc;
+  color: #0f172a;
   min-height: 100vh;
 }
 

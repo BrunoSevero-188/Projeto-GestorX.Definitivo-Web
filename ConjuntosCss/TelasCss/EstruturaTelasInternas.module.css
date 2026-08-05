@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-bg);
+  background-color: #f8fafc;
 }
 
 .containerTelaPrincipal {
@@ -17,9 +17,9 @@
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text);
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  color: #0f172a;
   padding: 1rem 1.25rem;
   position: sticky;
   top: 0;
@@ -27,8 +27,8 @@
 }
 
 .containerLinkTelaPrincipal {
-  color: var(--color-text-muted);
-  transition: opacity var(--transition-base);
+  color: #64748b;
+  transition: opacity 200ms ease;
 }
 
 .containerLinkTelaPrincipal:hover {
@@ -42,7 +42,7 @@
 }
 
 .containerFlechaRetorno:hover {
-  color: var(--color-primary);
+  color: #4f46e5;
 }
 
 .containerEspacoCabecalho {
@@ -59,7 +59,7 @@
 
 .containerBotão:hover {
   opacity: 0.8;
-  transition: opacity var(--transition-base);
+  transition: opacity 200ms ease;
 }
 
 .container {
@@ -112,8 +112,8 @@
     left: 0;
     width: 260px;
     height: 100vh;
-    background-color: var(--color-surface);
-    border-right: 1px solid var(--color-border);
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
     padding: 1.5rem 1.25rem;
     align-items: stretch;
     justify-content: flex-start;

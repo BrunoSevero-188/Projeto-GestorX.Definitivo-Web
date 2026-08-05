@@ -5,7 +5,7 @@
   justify-content: center;
   min-width: 100vw;
   min-height: 100vh;
-  background-color: var(--color-bg);
+  background-color: #f8fafc;
   padding: 1.5rem;
 }
 
@@ -18,7 +18,7 @@
 
 .containerLinkLogo {
   display: inline-block;
-  transition: opacity var(--transition-base);
+  transition: opacity 200ms ease;
 }
 
 .containerLinkLogo:hover {
@@ -29,10 +29,10 @@
 .containerCadastrar {
   width: 100%;
   max-width: 24rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-md);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   padding: 2rem 1.5rem;
 }
 
@@ -55,36 +55,36 @@
 }
 
 .containerImagem {
-  border-radius: var(--radius-md);
-  background-color: var(--color-surface);
+  border-radius: 12px;
+  background-color: #ffffff;
 }
 
 .tituloCabecalho {
   text-align: center;
-  font-size: var(--font-size-xl);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: #0f172a;
 }
 
 .mensagemErro,
 .mensagemSucesso {
   width: 100%;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
   padding: 0.75rem;
   text-align: center;
-  font-size: var(--font-size-sm);
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
 .mensagemErro {
-  border: 1px solid var(--color-danger);
-  background-color: var(--color-danger-bg);
+  border: 1px solid #dc2626;
+  background-color: #fee2e2;
   color: #991b1b;
 }
 
 .mensagemSucesso {
-  border: 1px solid var(--color-success);
-  background-color: var(--color-success-bg);
+  border: 1px solid #16a34a;
+  background-color: #dcfce7;
   color: #166534;
 }
 
@@ -92,10 +92,10 @@
 .containerCriarUsuario {
   width: 100%;
   max-width: 46rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-md);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -109,22 +109,22 @@
 }
 
 .containerImageLogo {
-  border-radius: var(--radius-md);
+  border-radius: 12px;
 }
 
 .containerLinkTexto {
-  font-size: var(--font-size-xl);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: #0f172a;
 }
 
 .containerRedefinirSenha {
   width: 100%;
   max-width: 24rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-md);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   padding: 2rem 1.5rem;
 }
 
@@ -133,9 +133,9 @@
 }
 
 .tituloCabecalhoRedefinir {
-  font-size: var(--font-size-lg);
+  font-size: 1.125rem;
   font-weight: 600;
-  color: var(--color-text);
+  color: #0f172a;
 }
 
 .container {
@@ -155,10 +155,10 @@
 }
 
 .subtituloSelecao {
-  font-size: var(--font-size-lg);
+  font-size: 1.125rem;
   font-weight: 500;
   text-align: center;
-  color: var(--color-text);
+  color: #0f172a;
   margin: 0;
 }
 
@@ -177,19 +177,19 @@
   min-width: 180px;
   flex: 1;
   padding: 1rem 1.5rem;
-  font-size: var(--font-size-base);
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
+  color: #0f172a;
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 200ms ease;
 }
 
 .botaoTipoConta:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-primary-light);
+  border-color: #4f46e5;
+  background-color: #eef2ff;
   transform: translateY(-2px);
 }
 

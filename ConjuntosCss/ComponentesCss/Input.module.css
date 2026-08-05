@@ -42,53 +42,53 @@
 
 .containerComponenteinput {
   width: 100%;
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-sm);
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   padding: 0.75rem 0.875rem;
-  color: var(--color-text);
+  color: #0f172a;
   outline: none;
-  background-color: var(--color-surface);
-  font-size: var(--font-size-sm);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .containerComponenteinput:hover {
-  border-color: var(--color-primary);
+  border-color: #4f46e5;
 }
 
 .containerComponenteinput:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-soft);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #e0e7ff;
 }
 
 .containerElementoInput {
   width: 100%;
   padding: 0.75rem 0.875rem;
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-sm);
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   outline: none;
-  background-color: var(--color-surface);
-  font-size: var(--font-size-sm);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .containerElementoInput:hover {
-  border-color: var(--color-primary);
+  border-color: #4f46e5;
 }
 
 .containerElementoInput:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-soft);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #e0e7ff;
 }
 
 .containerElementoInput:focus ~ label,
 .containerElementoInput:not(:placeholder-shown) ~ label {
   top: 0;
-  font-size: var(--font-size-xs);
-  color: var(--color-primary);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-primary-soft);
-  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: #4f46e5;
+  background-color: #ffffff;
+  border: 1px solid #e0e7ff;
+  border-radius: 8px;
   padding: 0 4px;
   transform: translateY(-50%);
 }
@@ -99,24 +99,24 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-text-muted);
+  color: #64748b;
   pointer-events: none;
-  transition: all var(--transition-base);
+  transition: all 200ms ease;
   background-color: transparent;
   padding: 0 0.25rem;
-  font-size: var(--font-size-sm);
+  font-size: 0.875rem;
 }
 
 .containerPrincipal:hover .containerLabel {
-  color: var(--color-primary);
+  color: #4f46e5;
 }
 
 .input-field:focus ~ .containerLabel,
 .input-field:not(:placeholder-shown) ~ .containerLabel {
   top: 0;
-  font-size: var(--font-size-xs);
-  color: var(--color-primary);
-  background-color: var(--color-surface);
+  font-size: 0.75rem;
+  color: #4f46e5;
+  background-color: #ffffff;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }

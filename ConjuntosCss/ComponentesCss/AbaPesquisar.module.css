@@ -2,18 +2,18 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
   padding: 0.55rem 0.85rem;
   width: 100%;
   max-width: 24rem;
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .containerDiv:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-soft);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #e0e7ff;
 }
 
 @media (min-width: 768px) {
@@ -25,7 +25,7 @@
 .searchIcon {
   width: 1.15rem;
   height: 1.15rem;
-  color: var(--color-text-muted);
+  color: #64748b;
   flex-shrink: 0;
 }
 
@@ -33,12 +33,12 @@
   background-color: transparent;
   outline: none;
   border: none;
-  color: var(--color-text);
+  color: #0f172a;
   width: 100%;
-  font-size: var(--font-size-sm);
+  font-size: 0.875rem;
 }
 
 .inputPesquisar::placeholder {
-  color: var(--color-text-muted);
+  color: #64748b;
   opacity: 1;
 }
