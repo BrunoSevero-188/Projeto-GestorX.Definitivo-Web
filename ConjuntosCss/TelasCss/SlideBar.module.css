@@ -1,15 +1,23 @@
+/* ===== Painel flutuante (popover) aberto pelos cartões da tela principal ===== */
+
 .containerPrincipal {
   position: absolute;
   left: 50%;
   top: calc(100% + 0.75rem);
   z-index: 50;
-  width: 18rem;
+  width: min(92vw, 20rem);
   transform: translateX(-50%);
-  border-radius: 0.375rem;
-  border: 4px solid #78350f;
-  background-color: #b45309;
-  color: #ffffff;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 1024px) {
+  .containerPrincipal {
+    width: 22rem;
+  }
 }
 
 .containerElementos {
@@ -22,14 +30,15 @@
 .containerElementoBotao {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .containerTextoElementoBotao {
   flex: 1;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: var(--font-size-lg);
   font-weight: 700;
+  color: var(--color-text);
 }
 
 .containerBotaoFechar {
@@ -38,43 +47,47 @@
   justify-content: center;
   background: transparent;
   border: 0;
-  color: inherit;
+  color: var(--color-text-muted);
   cursor: pointer;
+  transition: color var(--transition-base);
 }
 
 .containerXElementoBotao {
   width: 1.5rem;
   height: 1.5rem;
-  color: #ffffff;
-  transition: color 200ms ease-in-out;
+  color: inherit;
 }
 
-.containerXElementoBotao:hover {
-  color: #d1d5db;
+.containerBotaoFechar:hover {
+  color: var(--color-text);
 }
 
 .containerOrdemCategorias {
-  margin-bottom: 1.5rem;
-  border-radius: 0.375rem;
-  background-color: #78350f;
-  padding: 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary-light);
+  padding: 0.85rem;
   text-align: center;
 }
 
 .containerTextoOrdemCategorias {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .containerTextoOrdemCategoriasDestaque {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
+  color: var(--color-primary);
 }
 
 .containerNavegacao {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.6rem;
 }
+
+/* ===== Layout de páginas internas (Acessar Estante, Estoque, Relatórios etc.) ===== */
 
 .paginaPrincipal {
   display: flex;
@@ -82,7 +95,7 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--color-bg);
 }
 
 .paginaPrincipalCentralizada {
@@ -91,7 +104,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--color-bg);
   padding: 1.5rem;
 }
 
@@ -100,82 +113,99 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  background-color: #b45309;
-  color: #ffffff;
-  padding: 1.25rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverted);
+  padding: 1rem 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .paginaCabecalho {
+    padding: 1.25rem 2rem;
+  }
 }
 
 .paginaLinkLogo {
   display: flex;
   align-items: center;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity var(--transition-base);
 }
 
 .paginaLinkLogo:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .paginaLogo {
-  border: 2px solid #d97706;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .paginaTitulo {
-  display: flex;          /* ADICIONADO: Para alinhar o ícone com o texto */
-  align-items: center;     /* ADICIONADO: Mantém o ícone centralizado verticalmente */
-  justify-content: center; /* ADICIONADO: Centraliza o título no meio da barra */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   text-align: center;
   color: inherit;
-  font-size: 1.5rem;
+  font-size: var(--font-size-lg);
   font-weight: 700;
 }
 
-.paginaTituloIcone {        /* ADICIONADO: Para dar o espaçamento correto no ícone Lucide */
+@media (min-width: 768px) {
+  .paginaTitulo {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.paginaTituloIcone {
   margin-right: 0.5rem;
 }
 
 .paginaTituloEscuro {
   flex: 1;
   text-align: center;
-  color: #000000;
-  font-size: 1.5rem;
+  color: var(--color-text);
+  font-size: var(--font-size-xl);
   font-weight: 700;
 }
 
 .paginaEspacoCabecalho {
-  width: 5rem;
+  width: 2.5rem;
 }
 
 .paginaLinkRetornoArea {
   width: 100%;
+  max-width: 72rem;
   margin-top: 1rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
 .paginaLinkRetorno {
-  color: #b45309;
+  color: var(--color-primary);
   font-weight: 600;
-  text-decoration: underline;
-  transition: color 200ms ease-in-out;
+  text-decoration: none;
+  transition: color var(--transition-base);
 }
 
 .paginaLinkRetorno:hover {
-  color: #78350f;
+  color: var(--color-primary-hover);
+  text-decoration: underline;
 }
 
-.paginaSecao {
-  width: 100%;
-  max-width: 64rem;
-  margin-top: 2.5rem;
-  padding: 1.5rem;
-}
-
+.paginaSecao,
 .paginaSecaoComEspaco {
   width: 100%;
-  max-width: 64rem;
-  margin-top: 2.5rem;
-  padding: 1.5rem;
+  max-width: 72rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem 3rem;
+}
+
+@media (min-width: 1024px) {
+  .paginaSecao,
+  .paginaSecaoComEspaco {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem 4rem;
+  }
 }
 
 .paginaSecaoComEspaco > * + * {
@@ -185,9 +215,10 @@
 .paginaCartaoFormulario {
   width: 100%;
   max-width: 42rem;
-  border: 1px solid #000000;
-  border-radius: 0.375rem;
-  background-color: #f3f4f6;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
   padding: 1.5rem;
 }
 
@@ -208,11 +239,34 @@
   gap: 1rem;
 }
 
+@media (min-width: 768px) {
+  .formularioGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Grade de filtros: empilhada no celular, em linha no desktop */
 .filtroGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   align-items: end;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .filtroGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .filtroGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .campoFiltro {
@@ -221,143 +275,81 @@
 }
 
 .campoRotulo {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
   font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .campoSelect {
-  border: 1px solid #9ca3af;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  font-size: var(--font-size-sm);
+  background-color: var(--color-surface);
 }
 
 .campoAcao {
   display: flex;
-  justify-content: center;
+  justify-content: stretch;
+}
+
+@media (min-width: 1024px) {
+  .campoAcao {
+    justify-content: flex-start;
+  }
 }
 
 .perfilImagem {
   width: 7.1875rem;
   height: 7.1875rem;
-  border-radius: 9999px;
-  border: 8px solid currentColor;
+  border-radius: var(--radius-full);
+  border: 4px solid var(--color-primary-soft);
   object-fit: cover;
 }
 
 .perfilAcoes {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
 
+/* Tabela: rola horizontalmente no celular, ocupa a largura no desktop */
 .tabelaContainer {
   overflow-x: auto;
-  border: 1px solid #9ca3af;
-  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  margin-top: 1.5rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabela {
   width: 100%;
+  min-width: 640px;
   border-collapse: collapse;
   text-align: left;
+  font-size: var(--font-size-sm);
 }
 
 .tabelaCabecalho {
-  background-color: #b45309;
-  color: #ffffff;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-hover);
 }
 
-.tabelaCelula {
-  border: 1px solid #d1d5db;
-  padding: 0.75rem;
+.tabelaLinha {
+  border-top: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
 }
 
 .tabelaLinha:hover {
-  background-color: #f3f4f6;
+  background-color: var(--color-bg);
 }
 
-.contatosGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-}
-
-.contatoCard {
-  border: 1px solid #9ca3af;
-  border-radius: 0.5rem;
-  background-color: #f3f4f6;
-  padding: 1rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 200ms ease-in-out;
-}
-
-.contatoCard:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
-}
-
-.contatoCardConteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.contatoImagemContainer {
-  display: flex;
-  width: 7rem;
-  height: 7rem;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 9999px;
-  border: 4px solid #d97706;
-  background-color: #d1d5db;
-}
-
-.contatoImagem {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.contatoNome {
-  text-align: center;
-  color: #000000;
-  font-size: 1.125rem;
-  font-weight: 700;
-}
-
-.contatoTexto {
-  color: #4b5563;
-  font-size: 0.875rem;
-}
-
-.contatoTextoCentralizado {
-  color: #4b5563;
-  text-align: center;
-  font-size: 0.875rem;
-}
-
-@media (min-width: 768px) {
-  .formularioGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .filtroGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .campoAcao {
-    justify-content: flex-end;
-  }
-
-  .contatosGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .contatosGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+.tabelaCelula {
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
 }
