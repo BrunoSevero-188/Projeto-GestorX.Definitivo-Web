@@ -1,3 +1,0 @@
-﻿export default function MovimentacaoPage() {
-  return <div>Movimentacao</div>
-}

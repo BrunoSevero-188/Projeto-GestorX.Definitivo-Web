@@ -5,7 +5,7 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/public/Logo.png";
+import Logo from "@/public/Logo/GestorXpressLogo.svg";
 import { produtosEstoque } from "@/components/produtosEstoque";
 import styleSlideBar from "@/ConjuntosCss/TelasCss/SlideBar.module.css";
 

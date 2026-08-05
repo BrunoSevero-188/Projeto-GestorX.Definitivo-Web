@@ -5,7 +5,8 @@ import { Button } from "@/components/button";
 import { InputandLabel } from "@/components/inputandLabel";  
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/public/Logo.png";
+
+import Logo from "@/public/Logo/GestorXpressLogo.svg";
 
 import styleSlideBar from "@/ConjuntosCss/TelasCss/SlideBar.module.css";
 
