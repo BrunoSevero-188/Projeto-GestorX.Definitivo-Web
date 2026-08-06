@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "concurrently \"next dev\" \"node scripts/mostrar-acesso.js\"",
     "build": "prisma generate && next build",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
@@ -26,9 +26,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "prisma": "^7.8.0",
+    "qrcode-terminal": "^0.12.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

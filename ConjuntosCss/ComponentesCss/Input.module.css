@@ -1,3 +1,5 @@
+/* Tablet/celular: 1 coluna (todos os imputs em linha vertical).
+   Desktop/Notebook/PC/TVSmart (>=1024px): 2 colunas, formando a grade 2x5. */
 .containerInputs {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -7,6 +9,13 @@
 @media (min-width: 768px) {
   .containerInputs {
     gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .containerInputs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
   }
 }
 
