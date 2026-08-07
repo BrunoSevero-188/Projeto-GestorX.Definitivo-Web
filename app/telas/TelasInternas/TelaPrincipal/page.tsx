@@ -9,6 +9,7 @@ import SlideBarEstoque from "@/app/telas/TelasInternas/slideBar/slideBarPrincipa
 import SlideBarEstante from "@/app/telas/TelasInternas/slideBar/slideBarPrincipais/Estante.page";
 import SlideBarContatos from "@/app/telas/TelasInternas/slideBar/slideBarPrincipais/Contatos.page";
 
+import { dadosUsuario } from "@/components/dadosUsuario";
 import ItemIconButtonTelaPrincipal from "@/components/iconButton/ItemIconButtonTelaPrincipal";
 import AbaPesquisar from "@/components/abaPesquisar";
 
@@ -18,6 +19,10 @@ export default function TelaPrincipal() {
   const [activeSidebar, setActiveSidebar] = useState<null | string>(null);
   const [query, setQuery] = useState("");
   const [menuAberto, setMenuAberto] = useState(false);
+
+  // TODO: trocar pelo nome do usuário logado de verdade (sessão/API de login),
+  // hoje usa o mesmo dado mock que a tela de Perfil já usa (dadosUsuario[0]).
+  const nomeConta = dadosUsuario[0].nomeCompleto;
 
   const openSidebar = (name: string) => setActiveSidebar(name);
   const closeSidebar = () => setActiveSidebar(null);
@@ -39,6 +44,9 @@ export default function TelaPrincipal() {
 
           <Link href="/" className={styleEstrutura.containerLinkTelaPrincipal}>
             <ArrowLeft className={styleEstrutura.containerFlechaRetorno} />
+            <span className={styleEstrutura.textoSairConta}>
+              Sair da conta ({nomeConta})
+            </span>
           </Link>
 
           <AbaPesquisar query={query} setQuery={setQuery} />

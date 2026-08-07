@@ -27,12 +27,37 @@
 }
 
 .containerLinkTelaPrincipal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #64748b;
   transition: opacity 200ms ease;
 }
 
 .containerLinkTelaPrincipal:hover {
   opacity: 0.7;
+}
+
+.textoSairConta {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  white-space: nowrap;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width 200ms ease, opacity 150ms ease;
+}
+
+.containerLinkTelaPrincipal:hover .textoSairConta {
+  max-width: 16rem;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .containerLinkTelaPrincipal:hover .textoSairConta {
+    display: none;
+  }
 }
 
 .containerFlechaRetorno {
@@ -105,17 +130,15 @@
 }
 
 /* Painel com a lista de botões, sempre centralizada (vertical e
-   horizontalmente) dentro do overlay */
+   horizontalmente) dentro do overlay. Sem fundo/borda próprios — só
+   organiza os botões; o visual (fundo branco, borda) fica em cada
+   botão (.telaPrincipal, no IconButton.module.css). */
 .containerNavIconButton {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
   width: min(88vw, 20rem);
-  background-color: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
-  padding: 1.5rem;
 }
 
 .containerItemIconButton {
@@ -155,11 +178,6 @@
 
   .containerNavIconButton {
     width: min(100%, 22rem);
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 18px;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-    padding: 1.5rem;
     gap: 0.5rem;
   }
 }
