@@ -31,7 +31,7 @@
 
 /* Botão de navegação da tela principal — linha (ícone + texto), igual em
    qualquer tamanho de tela. No mobile aparece dentro do painel overlay,
-   no desktop dentro da sidebar fixa (ver EstruturaTelasInternas). */
+   no desktop dentro do painel centralizado (ver EstruturaTelasInternas). */
 .telaPrincipal {
   width: 100%;
   flex-direction: row;
