@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, User, Box, ShoppingCart, Phone } from "lucide-react";
+import { ArrowLeft, User, Box, ShoppingCart, Phone, Menu, X } from "lucide-react";
 import Link from "next/link";
 
 import SlideBarPerfil from "@/app/telas/TelasInternas/slideBar/slideBarPrincipais/Perfi.page";
@@ -17,46 +17,78 @@ import styleEstrutura from "@/ConjuntosCss/TelasCss/EstruturaTelasInternas.modul
 export default function TelaPrincipal() {
   const [activeSidebar, setActiveSidebar] = useState<null | string>(null);
   const [query, setQuery] = useState("");
+  const [menuAberto, setMenuAberto] = useState(false);
 
   const openSidebar = (name: string) => setActiveSidebar(name);
   const closeSidebar = () => setActiveSidebar(null);
+
+  const toggleMenu = () => setMenuAberto((aberto) => !aberto);
+  const closeMenu = () => setMenuAberto(false);
+
+  // Fecha o menu mobile automaticamente ao escolher uma opção
+  const abrirEFechar = (name: string) => {
+    openSidebar(name);
+    closeMenu();
+  };
 
   return (
     <main className={styleEstrutura.containerPrincipal}>
       <section className={styleEstrutura.containerTelaPrincipal}>
 
         <header className={styleEstrutura.cabecalhoTelaPrincipal}>
-          
+
           <Link href="/" className={styleEstrutura.containerLinkTelaPrincipal}>
             <ArrowLeft className={styleEstrutura.containerFlechaRetorno} />
           </Link>
 
           <AbaPesquisar query={query} setQuery={setQuery} />
 
-          <div className={styleEstrutura.containerEspacoCabecalho} aria-hidden="true" />
+          {/* Botão de abrir/fechar o menu — visível só em tablet/celular */}
+          <button
+            type="button"
+            className={styleEstrutura.botaoMenuMobile}
+            onClick={toggleMenu}
+            aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuAberto}
+          >
+            {menuAberto ? (
+              <X className={styleEstrutura.containerFlechaRetorno} />
+            ) : (
+              <Menu className={styleEstrutura.containerFlechaRetorno} />
+            )}
+          </button>
         </header>
 
-        <div className={styleEstrutura.container}>
-          <nav className={styleEstrutura.containerNavIconButton}>
-            <ItemIconButtonTelaPrincipal icon={User} label="Perfil" onClick={() => openSidebar("perfil")}>
+        {/* No desktop este bloco é a sidebar fixa (sempre visível).
+            No mobile/tablet é um overlay que só aparece quando menuAberto=true.
+            Clicar no fundo escurecido (fora do painel) fecha o menu. */}
+        <div
+          className={`${styleEstrutura.container} ${menuAberto ? styleEstrutura.containerAberto : ""}`}
+          onClick={closeMenu}
+        >
+          <nav
+            className={styleEstrutura.containerNavIconButton}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ItemIconButtonTelaPrincipal icon={User} label="Perfil" onClick={() => abrirEFechar("perfil")}>
               <SlideBarPerfil isOpen={activeSidebar === "perfil"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            <ItemIconButtonTelaPrincipal icon={Box} label="Estoque" onClick={() => openSidebar("estoque")}>
+            <ItemIconButtonTelaPrincipal icon={Box} label="Estoque" onClick={() => abrirEFechar("estoque")}>
               <SlideBarEstoque isOpen={activeSidebar === "estoque"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            <ItemIconButtonTelaPrincipal icon={ShoppingCart} label="Estante" onClick={() => openSidebar("estante")}>
+            <ItemIconButtonTelaPrincipal icon={ShoppingCart} label="Estante" onClick={() => abrirEFechar("estante")}>
               <SlideBarEstante isOpen={activeSidebar === "estante"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            <ItemIconButtonTelaPrincipal icon={Phone} label="Contatos" onClick={() => openSidebar("contatos")}>
+            <ItemIconButtonTelaPrincipal icon={Phone} label="Contatos" onClick={() => abrirEFechar("contatos")}>
               <SlideBarContatos isOpen={activeSidebar === "contatos"} onClose={closeSidebar} />
-             </ItemIconButtonTelaPrincipal>
+            </ItemIconButtonTelaPrincipal>
           </nav>
         </div>
       </section>
-      
+
     </main>
   );
 }
