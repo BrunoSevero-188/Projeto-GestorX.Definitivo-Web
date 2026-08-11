@@ -51,6 +51,16 @@ export default function TelaPrincipal() {
 
           <AbaPesquisar query={query} setQuery={setQuery} />
 
+          {/* Avatar — atalho pro Perfil (mesmo efeito de clicar em "Perfil" na lista) */}
+          <button
+            type="button"
+            className={styleEstrutura.avatarPerfil}
+            onClick={() => abrirEFechar("perfil")}
+            aria-label="Abrir perfil"
+          >
+            <User className={styleEstrutura.avatarPerfilIcone} />
+          </button>
+
           {/* Botão de abrir/fechar o menu — visível só em tablet/celular */}
           <button
             type="button"

@@ -1,24 +1,27 @@
-/* ===== Painel flutuante (popover) aberto pelos cartões da tela principal ===== */
-
-/* ===== Painel flutuante (popover) aberto pelos cartões da tela principal ===== */
+/* ===== Painel que expande dentro da lista (empurra Estoque/Estante/Contatos
+   pra baixo), em vez de flutuar como popover separado ===== */
 
 .containerPrincipal {
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 0.75rem);
-  z-index: 50;
-  width: min(92vw, 20rem);
-  transform: translateX(-50%);
+  position: static;
+  width: 100%;
+  margin-top: 0.5rem;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   background-color: #ffffff;
   color: #0f172a;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  animation: expandirPainel 200ms ease;
 }
 
-@media (min-width: 1024px) {
-  .containerPrincipal {
-    width: 22rem;
+@keyframes expandirPainel {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
