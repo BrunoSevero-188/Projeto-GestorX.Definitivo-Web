@@ -1,5 +1,5 @@
 import { MonitoramentoPage } from "../../_components/SlideBarPages";
 
 export default function Page() {
-  return <MonitoramentoPage contexto="Estante" />;
+  return <MonitoramentoPage contexto="Contatos" />;
 }

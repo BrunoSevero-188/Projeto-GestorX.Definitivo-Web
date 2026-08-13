@@ -42,7 +42,14 @@ export default function SlideBarPerfil({ isOpen, onClose }: Props) {
           </div>
 
           <nav className={styleSlideBar.containerNavegacao}>
-            <IconButtonSlideBar icon={UserCircle} label="Acessar Perfil" onClick={() => router.push("/telas/TelasInternas/slideBar/Perfil/AcessarPerfil")} />
+            <IconButtonSlideBar
+              icon={UserCircle}
+              label="Acessar Perfil"
+              onClick={() => {
+                router.push("/telas/TelasInternas/slideBar/Perfil/AcessarPerfil");
+                onClose();
+              }}
+            />
 
             <IconButtonSlideBar
               icon={UserCheck}

@@ -1,7 +1,7 @@
 "use client";
 
 import IconButton from "@/components/iconButton/IconButton";
-import { Phone, User, FileText, Activity, X } from "lucide-react";
+import { Activity, FileText, Phone, User, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import styleSlideBar from "@/ConjuntosCss/TelasCss/SlideBar.module.css";
@@ -14,21 +14,15 @@ interface Props {
   onMonitor?: () => void;
 }
 
-export default function SlideBarContatos({
-  isOpen,
-  onClose,
-  onAddContact = () => {},
-  onReport = () => {},
-  onMonitor = () => {},
-}: Props) {
+export default function SlideBarContatos({ isOpen, onClose }: Props) {
   const router = useRouter();
 
   if (!isOpen) {
     return null;
   }
 
-  function acessarLista() {
-    router.push("/telas/TelasInternas/slideBar/Contatos/AcessarLista");
+  function navegar(path: string) {
+    router.push(path);
     onClose();
   }
 
@@ -38,16 +32,37 @@ export default function SlideBarContatos({
         <div>
           <div className={styleSlideBar.containerElementoBotao}>
             <h2 className={styleSlideBar.containerTextoElementoBotao}>Contatos</h2>
-            <button onClick={onClose} className={styleSlideBar.containerBotaoFechar}>
+            <button
+              type="button"
+              onClick={onClose}
+              className={styleSlideBar.containerBotaoFechar}
+              aria-label="Fechar Contatos"
+            >
               <X className={styleSlideBar.containerXElementoBotao} />
             </button>
           </div>
 
           <nav className={styleSlideBar.containerNavegacao}>
-            <IconButton icon={Phone} label="Acessar Lista" onClick={acessarLista} />
-            <IconButton icon={User} label="Adicionar Contato" onClick={onAddContact} />
-            <IconButton icon={FileText} label="Relatorio" onClick={onReport} />
-            <IconButton icon={Activity} label="Monitoramento" onClick={onMonitor} />
+            <IconButton
+              icon={Phone}
+              label="Acessar Lista"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Contatos/AcessarLista")}
+            />
+            <IconButton
+              icon={User}
+              label="Adicionar Contato"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Contatos/AdicionarContato")}
+            />
+            <IconButton
+              icon={FileText}
+              label="Relatorio"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Contatos/Relatorio")}
+            />
+            <IconButton
+              icon={Activity}
+              label="Monitoramento"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Contatos/Monitoramento")}
+            />
           </nav>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { RelatorioPage } from "../../_components/SlideBarPages";
 
 export default function Page() {
-  return <RelatorioPage contexto="Estante" />;
+  return <RelatorioPage contexto="Contatos" />;
 }

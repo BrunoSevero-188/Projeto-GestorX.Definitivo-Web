@@ -17,9 +17,6 @@ interface Props {
 export default function SlideBarEstoque({
   isOpen,
   onClose,
-  onMovement = () => {},
-  onReport = () => {},
-  onMonitor = () => {},
 }: Props) {
   const router = useRouter();
 
@@ -37,6 +34,21 @@ export default function SlideBarEstoque({
     onClose();
   }
 
+  function acessarMovimentacao() {
+    router.push("/telas/TelasInternas/slideBar/Estoque/Movimentacao");
+    onClose();
+  }
+
+  function acessarRelatorio() {
+    router.push("/telas/TelasInternas/slideBar/Estoque/Relatorio");
+    onClose();
+  }
+
+  function acessarMonitoramento() {
+    router.push("/telas/TelasInternas/slideBar/Estoque/Monitoramento");
+    onClose();
+  }
+
   return (
     <div className={styleSlideBar.containerPrincipal}>
       <div className={styleSlideBar.containerElementos}>
@@ -51,9 +63,9 @@ export default function SlideBarEstoque({
           <nav className={styleSlideBar.containerNavegacao}>
             <IconButton icon={Boxes} label="Acessar Estoque" onClick={acessarEstoque} />
             <IconButton icon={Package} label="Acessar Produto" onClick={acessarProduto} />
-            <IconButton icon={ArrowLeftRight} label="Movimentacao" onClick={onMovement} />
-            <IconButton icon={FileText} label="Relatorio" onClick={onReport} />
-            <IconButton icon={Activity} label="Monitoramento" onClick={onMonitor} />
+            <IconButton icon={ArrowLeftRight} label="Movimentacao" onClick={acessarMovimentacao} />
+            <IconButton icon={FileText} label="Relatorio" onClick={acessarRelatorio} />
+            <IconButton icon={Activity} label="Monitoramento" onClick={acessarMonitoramento} />
           </nav>
         </div>
       </div>

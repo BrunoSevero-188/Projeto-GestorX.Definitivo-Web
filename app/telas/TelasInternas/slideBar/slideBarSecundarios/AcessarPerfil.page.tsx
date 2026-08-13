@@ -59,7 +59,7 @@ export default function AcessarPerfil() {
             Adicionar Nova Conta
           </Button>
 
-          <Button onClick={() => router.push("/telas/slideBar/Perfil/EditarPerfil")}>
+          <Button onClick={() => router.push("/telas/TelasInternas/slideBar/Perfil/EditarPerfil")}>
             Editar Conta
           </Button>
         </div>
