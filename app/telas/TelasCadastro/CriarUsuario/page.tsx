@@ -28,7 +28,6 @@ export default function CriarUsuario() {
 
     // Campos exclusivos - Funcionario
     estabelecimento: "",
-    salario: "",
     dataAdmissao: "",
 
     // Campos exclusivos - Administrador
@@ -103,7 +102,11 @@ export default function CriarUsuario() {
               height={300}
             />
           </Link>
-          <h1 className={styleEstrutura.containerLinkTexto}>Criar Usuario</h1>
+          <h1 className={styleEstrutura.containerLinkTexto}>
+            {tipoConta
+              ? `Criar Usuario (${tipoConta === "administrador" ? "Administrador" : "Funcionario"})`
+              : "Criar Usuario"}
+          </h1>
         </div>
 
         {/* ETAPA 1 - Selecao do tipo de conta */}
@@ -140,7 +143,7 @@ export default function CriarUsuario() {
               onClick={voltarParaSelecao}
               className={styleEstrutura.botaoVoltar}
             >
-              ← Trocar tipo de conta ({tipoConta === "administrador" ? "Administrador" : "Funcionario"})
+              ← Trocar tipo de conta
             </button>
 
             <div className={styleInput.containerOrdenaçãoInputs}>
@@ -198,7 +201,7 @@ export default function CriarUsuario() {
                   containerClassName={styleInput.containerElementoContainer}
                 />
 
-                {/* Campos exclusivos - Funcionario */}
+                {/* Campos exclusivos - Funcionario (Salario removido) */}
                 {tipoConta === "funcionario" && (
                   <>
                     <InputandLabel
@@ -206,15 +209,6 @@ export default function CriarUsuario() {
                       value={form.estabelecimento}
                       placeholder=" "
                       onChange={(e) => atualizar("estabelecimento", e.target.value)}
-                      className={styleInput.containerElementoInput}
-                      containerClassName={styleInput.containerElementoContainer}
-                    />
-                    <InputandLabel
-                      label="Salario"
-                      type="text"
-                      value={form.salario}
-                      placeholder=" "
-                      onChange={(e) => atualizar("salario", e.target.value)}
                       className={styleInput.containerElementoInput}
                       containerClassName={styleInput.containerElementoContainer}
                     />

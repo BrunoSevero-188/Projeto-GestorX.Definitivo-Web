@@ -15,14 +15,13 @@
 .cabecalhoTelaPrincipal {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
   gap: 1rem;
+  justify-content: space-between;
   background-color: #ffffff;
   border-bottom: 1px solid #e2e8f0;
   color: #0f172a;
-  padding: 0.75rem 1rem;
-  position: relative;
+  padding: 1rem 1.25rem;
+  position: sticky;
   top: 0;
   z-index: 20;
 }
@@ -91,16 +90,15 @@
 /* Avatar — atalho pro Perfil, fica no canto superior direito do cabeçalho.
    Menor no celular, cresce a partir do tablet/desktop. */
 .avatarPerfil {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
-  background: transparent;
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
+  order: 1;
   border-radius: 9999px;
-  border: none;
+  border: 1px solid #e0e7ff;
   background-color: #eef2ff;
   cursor: pointer;
   transition: background-color 200ms ease, border-color 200ms ease, width 200ms ease, height 200ms ease;
@@ -112,25 +110,21 @@
 }
 
 .avatarPerfilIcone {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.1rem;
+  height: 1.1rem;
   color: #4f46e5;
   transition: width 200ms ease, height 200ms ease;
 }
 
 @media (min-width: 768px) {
-  .botaoMenuMobile {
-    display: none;
-  }
-  
   .avatarPerfil {
     width: 2.5rem;
     height: 2.5rem;
   }
 
   .avatarPerfilIcone {
-    width: 2rem;
-    height: 2rem;
+    width: 1.35rem;
+    height: 1.35rem;
   }
 }
 
@@ -141,8 +135,8 @@
   }
 
   .avatarPerfilIcone {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 
@@ -150,11 +144,12 @@
    superior direito do cabeçalho). No desktop fica invisível mas ocupa
    o mesmo espaço, pra manter o cabeçalho balanceado. */
 .botaoMenuMobile {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
+  order: 2;
   border: none;
   background: transparent;
   color: #0f172a;
@@ -216,6 +211,11 @@
   .botaoMenuMobile {
     visibility: hidden;
     pointer-events: none;
+    order: 1;
+  }
+
+  .avatarPerfil {
+    order: 2;
   }
 
   .container {

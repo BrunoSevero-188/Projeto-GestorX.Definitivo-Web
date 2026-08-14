@@ -1,0 +1,58 @@
+export const produtosEstante = [
+  {
+    codigo: "EST-0011",
+    nome: "Refrigerante Cola 2L",
+    categoria: "Bebidas",
+    fornecedor: "Distribuidora Maxx",
+    preco: "R$ 9,50",
+  },
+  {
+    codigo: "EST-0024",
+    nome: "Água Mineral 500ml",
+    categoria: "Bebidas",
+    fornecedor: "Fornecedora Silva",
+    preco: "R$ 2,50",
+  },
+  {
+    codigo: "EST-0037",
+    nome: "Pão de Forma",
+    categoria: "Padaria",
+    fornecedor: "Alimentos Bom Preço",
+    preco: "R$ 7,90",
+  },
+  {
+    codigo: "EST-0048",
+    nome: "Biscoito Recheado",
+    categoria: "Alimentos",
+    fornecedor: "Distribuidora Maxx",
+    preco: "R$ 4,30",
+  },
+  {
+    codigo: "EST-0059",
+    nome: "Chocolate ao Leite 90g",
+    categoria: "Alimentos",
+    fornecedor: "Fornecedora Silva",
+    preco: "R$ 6,00",
+  },
+  {
+    codigo: "EST-0063",
+    nome: "Salgadinho 100g",
+    categoria: "Alimentos",
+    fornecedor: "Alimentos Bom Preço",
+    preco: "R$ 5,50",
+  },
+  {
+    codigo: "EST-0071",
+    nome: "Sabonete em Barra",
+    categoria: "Higiene",
+    fornecedor: "Distribuidora Maxx",
+    preco: "R$ 3,20",
+  },
+  {
+    codigo: "EST-0088",
+    nome: "Pilha AA (par)",
+    categoria: "Utilidades",
+    fornecedor: "Fornecedora Silva",
+    preco: "R$ 8,00",
+  },
+];

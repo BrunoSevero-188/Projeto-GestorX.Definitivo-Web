@@ -35,15 +35,26 @@
 .containerElementoBotao {
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
+  gap: 0.6rem;
+  margin: -1.25rem -1.25rem 1.25rem;
+  padding: 0.9rem 1.1rem;
+  background-color: #4f46e5;
+  border-radius: 12px 12px 0 0;
+}
+
+.containerIconeElementoBotao {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: #ffffff;
+  flex-shrink: 0;
 }
 
 .containerTextoElementoBotao {
   flex: 1;
-  text-align: center;
+  text-align: left;
   font-size: 1.125rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .containerBotaoFechar {
@@ -52,9 +63,10 @@
   justify-content: center;
   background: transparent;
   border: 0;
-  color: #64748b;
+  color: #ffffff;
+  opacity: 0.85;
   cursor: pointer;
-  transition: color 200ms ease;
+  transition: opacity 200ms ease;
 }
 
 .containerXElementoBotao {
@@ -64,7 +76,7 @@
 }
 
 .containerBotaoFechar:hover {
-  color: #0f172a;
+  opacity: 1;
 }
 
 .containerOrdemCategorias {
@@ -321,60 +333,6 @@
   margin-top: 1.5rem;
 }
 
-.contatosGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-.contatoCard {
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
-  overflow: hidden;
-}
-
-.contatoCardConteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem;
-  text-align: center;
-}
-
-.contatoImagemContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 9999px;
-  background-color: #eef2ff;
-  overflow: hidden;
-}
-
-.contatoImagem {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.contatoNome {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.contatoTexto,
-.contatoTextoCentralizado {
-  margin: 0;
-  font-size: 0.875rem;
-  color: #64748b;
-}
-
 /* Tabela: rola horizontalmente no celular, ocupa a largura no desktop */
 .tabelaContainer {
   overflow-x: auto;
@@ -580,4 +538,439 @@
 .paginaTituloIconeInline {
   vertical-align: middle;
   margin-right: 8px;
+}
+
+/* ===== Telas de confirmação (Desconectar/Desvincular Conta) ===== */
+
+.confirmacaoIcone {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Variante neutra/positiva — pra ações que não são destrutivas
+   (ex: Realizar Compra), em vez do vermelho padrão. */
+.confirmacaoIconeNeutro {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
+
+.confirmacaoTexto {
+  text-align: center;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.confirmacaoBotoes {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .confirmacaoBotoes {
+    flex-direction: row;
+  }
+}
+
+.botaoCancelar {
+  width: 100%;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.botaoCancelar:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.botaoPerigo {
+  width: 100%;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #dc2626;
+  background-color: #dc2626;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.botaoPerigo:hover {
+  background-color: #b91c1c;
+}
+
+/* ===== Cartões de Contato/Fornecedor (Lista de Contatos) ===== */
+
+.contatosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.contatoCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.contatoCard:hover {
+  border-color: #4f46e5;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.contatoCardConteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 1.5rem 1.25rem;
+}
+
+.contatoImagemContainer {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 3px solid #eef2ff;
+  margin-bottom: 0.5rem;
+}
+
+.contatoImagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contatoNome {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.contatoTexto,
+.contatoTextoCentralizado {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.botaoConfirmar {
+  width: 100%;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #4f46e5;
+  background-color: #4f46e5;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.botaoConfirmar:hover {
+  background-color: #4338ca;
+}
+
+/* ===== Realizar Venda ===== */
+
+.vendaLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 900px) {
+  .vendaLayout {
+    flex-direction: row;
+  }
+}
+
+.vendaProdutos {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.vendaItemProduto {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.vendaProdutoInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.vendaProdutoNome {
+  font-weight: 600;
+  color: #0f172a;
+  display: block;
+}
+
+.vendaProdutoDetalhe {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.vendaProdutoPreco {
+  font-weight: 700;
+  color: #4f46e5;
+  white-space: nowrap;
+}
+
+.botaoAdicionarProduto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border: none;
+  background-color: #4f46e5;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.botaoAdicionarProduto:hover {
+  background-color: #4338ca;
+}
+
+/* Nota fiscal — fica fixa na lateral direita no desktop */
+.notaFiscal {
+  width: 100%;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .notaFiscal {
+    width: 22rem;
+    flex-shrink: 0;
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+.notaFiscalTitulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+  border-bottom: 1px dashed #cbd5e1;
+  padding-bottom: 0.75rem;
+}
+
+.notaFiscalVazia {
+  font-size: 0.875rem;
+  color: #64748b;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.notaFiscalLista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+.notaFiscalItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.notaFiscalItemNome {
+  flex: 1;
+  min-width: 0;
+  color: #0f172a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notaFiscalItemQtd {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #64748b;
+}
+
+.botaoQtd {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.notaFiscalItemSubtotal {
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  min-width: 4rem;
+  text-align: right;
+}
+
+.notaFiscalTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.formasPagamentoTitulo {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.formasPagamentoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.botaoFormaPagamento {
+  padding: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #0f172a;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.botaoFormaPagamento:hover {
+  border-color: #4f46e5;
+}
+
+.botaoFormaPagamentoAtiva {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+  color: #ffffff;
+}
+
+.botaoFinalizarVenda {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #16a34a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.botaoFinalizarVenda:hover {
+  background-color: #15803d;
+}
+
+.botaoFinalizarVenda:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.vendaCodigoLinha {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.vendaCodigoInputWrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.botaoAdicionarCodigo {
+  padding: 0 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 200ms ease;
+}
+
+.botaoAdicionarCodigo:hover {
+  background-color: #4338ca;
+}
+
+.vendaCodigoErro {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  color: #dc2626;
+}
+
+.mensagemSucesso {
+  width: 100%;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #16a34a;
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.mensagemErro {
+  width: 100%;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #dc2626;
+  background-color: #fee2e2;
+  color: #991b1b;
 }

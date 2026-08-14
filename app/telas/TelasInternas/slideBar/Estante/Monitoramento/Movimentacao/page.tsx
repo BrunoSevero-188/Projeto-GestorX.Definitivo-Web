@@ -10,10 +10,10 @@ export default function Page() {
   const router = useRouter();
 
   const movimentacoes = [
-    { id: 1, tipo: "entrada", produto: "Arroz Tipo 1 5kg", quantidade: 80, data: "16/06/2026 11:20" },
-    { id: 2, tipo: "saida", produto: "Óleo de Soja 900ml", quantidade: 24, data: "16/06/2026 08:47" },
-    { id: 3, tipo: "entrada", produto: "Feijão Carioca 1kg", quantidade: 60, data: "15/06/2026 16:10" },
-    { id: 4, tipo: "saida", produto: "Açúcar Cristal 1kg", quantidade: 15, data: "15/06/2026 13:55" },
+    { id: 1, tipo: "entrada", produto: "Caderno A4", quantidade: 50, data: "16/06/2026 10:42" },
+    { id: 2, tipo: "saida", produto: "Caneta Azul", quantidade: 12, data: "16/06/2026 09:15" },
+    { id: 3, tipo: "entrada", produto: "Borracha Branca", quantidade: 100, data: "15/06/2026 17:28" },
+    { id: 4, tipo: "saida", produto: "Régua 30cm", quantidade: 5, data: "15/06/2026 14:03" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function Page() {
       </header>
 
       <main className={styleSlideBar.paginaSecao}>
-        <p className={styleSlideBar.textoSimples}>Histórico de entradas e saídas do estoque.</p>
+        <p className={styleSlideBar.textoSimples}>Histórico de entradas e saídas de produtos.</p>
 
         <ul className={styleSlideBar.listaMovimentacoes}>
           {movimentacoes.map((m) => {

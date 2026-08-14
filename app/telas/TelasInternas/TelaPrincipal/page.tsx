@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, User, Box, ShoppingCart, Phone, Menu, X } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, User, Box, ShoppingCart, Phone, ReceiptText, Menu, X } from "lucide-react";
 import Link from "next/link";
 
 import SlideBarPerfil from "@/app/telas/TelasInternas/slideBar/slideBarPrincipais/Perfi.page";
@@ -16,11 +17,13 @@ import AbaPesquisar from "@/components/abaPesquisar";
 import styleEstrutura from "@/ConjuntosCss/TelasCss/EstruturaTelasInternas.module.css";
 
 export default function TelaPrincipal() {
+  const router = useRouter();
   const [activeSidebar, setActiveSidebar] = useState<null | string>(null);
   const [query, setQuery] = useState("");
   const [menuAberto, setMenuAberto] = useState(false);
 
-  // TODO: trocar pelo nome do usuário logado de verdade (sessão/API de login)
+  // TODO: trocar pelo nome do usuário logado de verdade (sessão/API de login),
+  // hoje usa o mesmo dado mock que a tela de Perfil já usa (dadosUsuario[0]).
   const nomeConta = dadosUsuario[0].nomeCompleto;
 
   const openSidebar = (name: string) => setActiveSidebar(name);
@@ -41,7 +44,16 @@ export default function TelaPrincipal() {
 
         <header className={styleEstrutura.cabecalhoTelaPrincipal}>
 
-          {/* 1. Botão do menu/slidebar no LADO ESQUERDO (para Mobile/Tablet) */}
+          <Link href="/" className={styleEstrutura.containerLinkTelaPrincipal}>
+            <ArrowLeft className={styleEstrutura.containerFlechaRetorno} />
+            <span className={styleEstrutura.textoSairConta}>
+              Sair da conta ({nomeConta})
+            </span>
+          </Link>
+
+          <AbaPesquisar query={query} setQuery={setQuery} />
+
+          {/* Botão de abrir/fechar o menu — visível só em tablet/celular */}
           <button
             type="button"
             className={styleEstrutura.botaoMenuMobile}
@@ -56,18 +68,10 @@ export default function TelaPrincipal() {
             )}
           </button>
 
-          {/* 2. Link para Sair da Conta (Esquerda/Centro) */}
-          <Link href="/" className={styleEstrutura.containerLinkTelaPrincipal}>
-            <ArrowLeft className={styleEstrutura.containerFlechaRetorno} />
-            <span className={styleEstrutura.textoSairConta}>
-              Sair da conta ({nomeConta})
-            </span>
-          </Link>
-
-          {/* 3. Barra de Pesquisa (Centro) */}
-          <AbaPesquisar query={query} setQuery={setQuery} />
-
-          {/* 4. Avatar — Ícone de Perfil no CANTO SUPERIOR DIREITO */}
+          {/* Avatar — atalho pro Perfil (mesmo efeito de clicar em "Perfil" na lista).
+              A posição visual (antes ou depois do botão de menu) é controlada
+              por CSS (order), pra ficar certo tanto no mobile (menu no canto)
+              quanto no desktop (avatar no canto). */}
           <button
             type="button"
             className={styleEstrutura.avatarPerfil}
@@ -76,66 +80,46 @@ export default function TelaPrincipal() {
           >
             <User className={styleEstrutura.avatarPerfilIcone} />
           </button>
-
         </header>
 
-        {/* Estrutura do Menu / Slidebar */}
+        {/* No desktop este bloco é a sidebar fixa (sempre visível).
+            No mobile/tablet é um overlay que só aparece quando menuAberto=true.
+            Clicar no fundo escurecido (fora do painel) fecha o menu. */}
         <div
-          className={`${styleEstrutura.container} ${
-            menuAberto ? styleEstrutura.containerAberto : ""
-          }`}
+          className={`${styleEstrutura.container} ${menuAberto ? styleEstrutura.containerAberto : ""}`}
           onClick={closeMenu}
         >
           <nav
             className={styleEstrutura.containerNavIconButton}
             onClick={(e) => e.stopPropagation()}
           >
-            <ItemIconButtonTelaPrincipal
-              icon={User}
-              label="Perfil"
-              onClick={() => abrirEFechar("perfil")}
-            >
-              <SlideBarPerfil
-                isOpen={activeSidebar === "perfil"}
-                onClose={closeSidebar}
-              />
+            <ItemIconButtonTelaPrincipal icon={User} label="Perfil" onClick={() => abrirEFechar("perfil")}>
+              <SlideBarPerfil isOpen={activeSidebar === "perfil"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            <ItemIconButtonTelaPrincipal
-              icon={Box}
-              label="Estoque"
-              onClick={() => abrirEFechar("estoque")}
-            >
-              <SlideBarEstoque
-                isOpen={activeSidebar === "estoque"}
-                onClose={closeSidebar}
-              />
+            <ItemIconButtonTelaPrincipal icon={Box} label="Estoque" onClick={() => abrirEFechar("estoque")}>
+              <SlideBarEstoque isOpen={activeSidebar === "estoque"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            <ItemIconButtonTelaPrincipal
-              icon={ShoppingCart}
-              label="Estante"
-              onClick={() => abrirEFechar("estante")}
-            >
-              <SlideBarEstante
-                isOpen={activeSidebar === "estante"}
-                onClose={closeSidebar}
-              />
+            <ItemIconButtonTelaPrincipal icon={ShoppingCart} label="Estante" onClick={() => abrirEFechar("estante")}>
+              <SlideBarEstante isOpen={activeSidebar === "estante"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            <ItemIconButtonTelaPrincipal
-              icon={Phone}
-              label="Contatos"
-              onClick={() => abrirEFechar("contatos")}
-            >
-              <SlideBarContatos
-                isOpen={activeSidebar === "contatos"}
-                onClose={closeSidebar}
-              />
+            <ItemIconButtonTelaPrincipal icon={Phone} label="Contatos" onClick={() => abrirEFechar("contatos")}>
+              <SlideBarContatos isOpen={activeSidebar === "contatos"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
+
+            {/* "Realizar Venda" não abre um painel de opções, vai direto
+                pra tela de registro de venda (nota fiscal + pagamento). */}
+            <ItemIconButtonTelaPrincipal
+              icon={ReceiptText}
+              label="Realizar Venda"
+              onClick={() => router.push("/telas/TelasInternas/slideBar/RealizarVenda")}
+            />
           </nav>
         </div>
       </section>
+
     </main>
   );
 }

@@ -23,6 +23,7 @@ export default function SlideBarPerfil({ isOpen, onClose }: Props) {
       <div className={styleSlideBar.containerElementos}>
         <div>
           <div className={styleSlideBar.containerElementoBotao}>
+            <UserCircle className={styleSlideBar.containerIconeElementoBotao} />
             <h2 className={styleSlideBar.containerTextoElementoBotao}>Perfil</h2>
             <button onClick={onClose} className={styleSlideBar.containerBotaoFechar}>
               <X className={styleSlideBar.containerXElementoBotao} />
@@ -45,46 +46,25 @@ export default function SlideBarPerfil({ isOpen, onClose }: Props) {
             <IconButtonSlideBar
               icon={UserCircle}
               label="Acessar Perfil"
-              onClick={() => {
-                router.push("/telas/TelasInternas/slideBar/Perfil/AcessarPerfil");
-                onClose();
-              }}
+              onClick={() => router.push("/telas/TelasInternas/slideBar/Perfil/AcessarPerfil")}
             />
 
             <IconButtonSlideBar
               icon={UserCheck}
               label="Adicionar Novo Perfil"
-              onClick={() => {
-                if (confirm("Deseja realmente criar uma nova conta?")) {
-                  router.push("/telas/TelasCadastro/CriarUsuario");
-                } else {
-                  router.push("/telas/TelasInternas/TelaPrincipal");
-                }
-              }}
+              onClick={() => router.push("/telas/TelasCadastro/CriarUsuario")}
             />
 
             <IconButtonSlideBar
               icon={UserMinus}
               label="Desconectar Conta"
-              onClick={() => {
-                if (confirm("Deseja realmente desconectar a conta?")) {
-                  router.push("/");
-                } else {
-                  router.push("/telas/TelasInternas/TelaPrincipal");
-                }
-              }}
+              onClick={() => router.push("/telas/TelasInternas/slideBar/Perfil/DesconectarConta")}
             />
 
             <IconButtonSlideBar
               icon={UserRoundX}
               label="Desvincular Conta"
-              onClick={() => {
-                if (confirm("Deseja realmente desvincular conta, isso significa que essa conta nao faz mais parceria com o Estabelecimento?")) {
-                  router.push("/");
-                } else {
-                  router.push("/telas/TelasInternas/TelaPrincipal");
-                }
-              }}
+              onClick={() => router.push("/telas/TelasInternas/slideBar/Perfil/DesvincularConta")}
             />
           </nav>
         </div>
