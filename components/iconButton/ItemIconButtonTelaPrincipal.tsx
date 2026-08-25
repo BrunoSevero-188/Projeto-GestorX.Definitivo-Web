@@ -7,7 +7,7 @@ interface ItemIconButtonTelaPrincipalProps {
   icon: LucideIcon;
   label: string;
   onClick: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export default function ItemIconButtonTelaPrincipal({
@@ -16,7 +16,7 @@ export default function ItemIconButtonTelaPrincipal({
   onClick,
   children,
 }: ItemIconButtonTelaPrincipalProps) {
-  return ( 
+  return (
     <div className={styleEstrutura.containerItemIconButton}>
       <IconButtonTelaPrincipal icon={icon} label={label} onClick={onClick} />
       {children}

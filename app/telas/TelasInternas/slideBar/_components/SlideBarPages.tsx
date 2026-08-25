@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,6 +13,7 @@ import {
   FileText,
   Layers,
   Package,
+  PlusCircle,
   Settings,
   Trash2,
   Upload,
@@ -19,7 +23,8 @@ import {
 
 import Logo from "@/public/Logo.png";
 import PerfilIcon from "@/public/Perfil-Icon.png";
-import { produtosEstoque } from "@/components/produtosEstoque";
+import { produtosEstoque as produtosEstoqueBase } from "@/components/produtosEstoque";
+import { produtosEstante as produtosEstanteBase } from "@/components/produtosEstante";
 import styleSlideBar from "@/ConjuntosCss/TelasCss/SlideBar.module.css";
 
 type Product = {
@@ -30,13 +35,9 @@ type Product = {
   preco: string;
   local?: string;
   quantidade?: string;
+  quantidadePorUnidade?: string;
+  dataValidade?: string;
 };
-
-const produtosEstante: Product[] = produtosEstoque.slice(0, 6).map((produto, index) => ({
-  ...produto,
-  local: `Prateleira ${index + 1}`,
-  quantidade: `${(index + 1) * 8} un.`,
-}));
 
 const contatos = [
   {
@@ -100,6 +101,13 @@ function PageShell({
   );
 }
 
+function formatarValidade(data?: string): string {
+  if (!data) return "—";
+  const [ano, mes, dia] = data.split("-");
+  if (!ano || !mes || !dia) return data;
+  return `${dia}/${mes}/${ano}`;
+}
+
 function ProductTable({ produtos, showLocation = false }: { produtos: Product[]; showLocation?: boolean }) {
   return (
     <div className={styleSlideBar.tabelaContainer}>
@@ -112,6 +120,8 @@ function ProductTable({ produtos, showLocation = false }: { produtos: Product[];
             <th className={styleSlideBar.tabelaCelula}>Fornecedor</th>
             {showLocation ? <th className={styleSlideBar.tabelaCelula}>Local</th> : null}
             {showLocation ? <th className={styleSlideBar.tabelaCelula}>Qtd.</th> : null}
+            <th className={styleSlideBar.tabelaCelula}>Qtd./Unidade</th>
+            <th className={styleSlideBar.tabelaCelula}>Validade</th>
             <th className={styleSlideBar.tabelaCelula}>Preco</th>
           </tr>
         </thead>
@@ -124,6 +134,8 @@ function ProductTable({ produtos, showLocation = false }: { produtos: Product[];
               <td className={styleSlideBar.tabelaCelula}>{produto.fornecedor}</td>
               {showLocation ? <td className={styleSlideBar.tabelaCelula}>{produto.local}</td> : null}
               {showLocation ? <td className={styleSlideBar.tabelaCelula}>{produto.quantidade}</td> : null}
+              <td className={styleSlideBar.tabelaCelula}>{produto.quantidadePorUnidade ?? "—"}</td>
+              <td className={styleSlideBar.tabelaCelula}>{formatarValidade(produto.dataValidade)}</td>
               <td className={styleSlideBar.tabelaCelula}>{produto.preco}</td>
             </tr>
           ))}
@@ -133,18 +145,169 @@ function ProductTable({ produtos, showLocation = false }: { produtos: Product[];
   );
 }
 
+const CAMPOS_VAZIOS = {
+  codigo: "",
+  nome: "",
+  categoria: "",
+  fornecedor: "",
+  preco: "",
+  quantidadePorUnidade: "",
+  dataValidade: "",
+};
+
+/**
+ * Formulário de cadastro de produto — reaproveitado tanto pela tela de
+ * Estoque quanto pela de Estante (contexto muda só o rótulo e o prefixo
+ * sugerido do código). Os produtos cadastrados ficam só na sessão atual
+ * (não existe API/banco de produtos ainda — quando existir, o `onCadastrar`
+ * é o ponto certo para persistir de verdade).
+ */
+function CadastroProdutoForm({
+  contexto,
+  prefixoCodigo,
+  onCadastrar,
+}: {
+  contexto: "Estoque" | "Estante";
+  prefixoCodigo: string;
+  onCadastrar: (produto: Product) => void;
+}) {
+  const [campos, setCampos] = useState(CAMPOS_VAZIOS);
+  const [mensagem, setMensagem] = useState("");
+
+  function atualizar(campo: keyof typeof CAMPOS_VAZIOS, valor: string) {
+    setCampos((atual) => ({ ...atual, [campo]: valor }));
+  }
+
+  function cadastrar(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!campos.nome || !campos.categoria || !campos.fornecedor || !campos.preco) {
+      setMensagem("Preencha ao menos nome, categoria, fornecedor e preço.");
+      return;
+    }
+
+    const codigo = campos.codigo.trim() || `${prefixoCodigo}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    onCadastrar({
+      codigo,
+      nome: campos.nome,
+      categoria: campos.categoria,
+      fornecedor: campos.fornecedor,
+      preco: campos.preco,
+      quantidadePorUnidade: campos.quantidadePorUnidade,
+      dataValidade: campos.dataValidade,
+    });
+
+    setCampos(CAMPOS_VAZIOS);
+    setMensagem(`Produto cadastrado ${contexto === "Estoque" ? "no estoque" : "na estante"} com sucesso.`);
+  }
+
+  return (
+    <form onSubmit={cadastrar} className={styleSlideBar.paginaCartaoFormulario}>
+      <div className={styleSlideBar.paginaCabecalhoFormulario}>
+        <h2 className={styleSlideBar.paginaTituloEscuro}>
+          <PlusCircle size={20} className={styleSlideBar.paginaTituloIconeInline} />
+          Cadastrar Produto
+        </h2>
+      </div>
+
+      <div className={styleSlideBar.formularioGrid}>
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Código (opcional)</label>
+          <input
+            className={styleSlideBar.campoSelect}
+            placeholder={`Ex: ${prefixoCodigo}-0099`}
+            value={campos.codigo}
+            onChange={(e) => atualizar("codigo", e.target.value)}
+          />
+        </div>
+
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Nome do produto</label>
+          <input
+            className={styleSlideBar.campoSelect}
+            value={campos.nome}
+            onChange={(e) => atualizar("nome", e.target.value)}
+          />
+        </div>
+
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Categoria</label>
+          <input
+            className={styleSlideBar.campoSelect}
+            value={campos.categoria}
+            onChange={(e) => atualizar("categoria", e.target.value)}
+          />
+        </div>
+
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Fornecedor</label>
+          <input
+            className={styleSlideBar.campoSelect}
+            value={campos.fornecedor}
+            onChange={(e) => atualizar("fornecedor", e.target.value)}
+          />
+        </div>
+
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Preço</label>
+          <input
+            className={styleSlideBar.campoSelect}
+            placeholder="Ex: R$ 9,90"
+            value={campos.preco}
+            onChange={(e) => atualizar("preco", e.target.value)}
+          />
+        </div>
+
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Quantidade por Unidade</label>
+          <input
+            className={styleSlideBar.campoSelect}
+            placeholder="Ex: 500 ml, 1 kg, 12 un."
+            value={campos.quantidadePorUnidade}
+            onChange={(e) => atualizar("quantidadePorUnidade", e.target.value)}
+          />
+        </div>
+
+        <div className={styleSlideBar.campoFiltro}>
+          <label className={styleSlideBar.campoRotulo}>Data de Validade</label>
+          <input
+            type="date"
+            className={styleSlideBar.campoSelect}
+            value={campos.dataValidade}
+            onChange={(e) => atualizar("dataValidade", e.target.value)}
+          />
+        </div>
+      </div>
+
+      {mensagem && <p className={styleSlideBar.mensagemSucesso}>{mensagem}</p>}
+
+      <button type="submit" className={styleSlideBar.botaoConfirmar}>
+        Cadastrar Produto
+      </button>
+    </form>
+  );
+}
+
 export function EstoquePage() {
   return (
     <PageShell title="Acessar Estoque" icon={Boxes}>
-      <ProductTable produtos={produtosEstoque} />
+      <ProductTable produtos={produtosEstoqueBase} />
     </PageShell>
   );
 }
 
 export function ProdutoEstoquePage() {
+  const [produtos, setProdutos] = useState<Product[]>(produtosEstoqueBase);
+
   return (
     <PageShell title="Produtos do Estoque" icon={Package}>
-      <ProductTable produtos={produtosEstoque.slice(0, 5)} />
+      <CadastroProdutoForm
+        contexto="Estoque"
+        prefixoCodigo="PRD"
+        onCadastrar={(produto) => setProdutos((atuais) => [produto, ...atuais])}
+      />
+      <ProductTable produtos={produtos} />
     </PageShell>
   );
 }
@@ -152,15 +315,22 @@ export function ProdutoEstoquePage() {
 export function EstantePage() {
   return (
     <PageShell title="Acessar Estante" icon={Layers}>
-      <ProductTable produtos={produtosEstante} showLocation />
+      <ProductTable produtos={produtosEstanteBase} showLocation />
     </PageShell>
   );
 }
 
 export function ProdutoEstantePage() {
+  const [produtos, setProdutos] = useState<Product[]>(produtosEstanteBase);
+
   return (
     <PageShell title="Produtos da Estante" icon={Package}>
-      <ProductTable produtos={produtosEstante.slice(0, 4)} showLocation />
+      <CadastroProdutoForm
+        contexto="Estante"
+        prefixoCodigo="EST"
+        onCadastrar={(produto) => setProdutos((atuais) => [produto, ...atuais])}
+      />
+      <ProductTable produtos={produtos} />
     </PageShell>
   );
 }

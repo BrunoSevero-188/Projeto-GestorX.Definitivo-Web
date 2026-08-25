@@ -5,6 +5,8 @@ export const produtosEstoque = [
     categoria: "Alimentos",
     fornecedor: "Alimentos Silva Ltda",
     preco: "R$ 8,90",
+    quantidadePorUnidade: "1 kg",
+    dataValidade: "2026-12-15",
   },
   {
     codigo: "PRD-0089",
@@ -12,6 +14,8 @@ export const produtosEstoque = [
     categoria: "Limpeza",
     fornecedor: "Clean Maxx",
     preco: "R$ 12,50",
+    quantidadePorUnidade: "1 kg",
+    dataValidade: "2027-06-01",
   },
   {
     codigo: "PRD-0150",
@@ -19,6 +23,8 @@ export const produtosEstoque = [
     categoria: "Alimentos",
     fornecedor: "Cerealista Brasil",
     preco: "R$ 25,00",
+    quantidadePorUnidade: "5 kg",
+    dataValidade: "2026-11-30",
   },
   {
     codigo: "PRD-0210",
@@ -26,6 +32,8 @@ export const produtosEstoque = [
     categoria: "Limpeza",
     fornecedor: "Higiclean",
     preco: "R$ 3,50",
+    quantidadePorUnidade: "500 ml",
+    dataValidade: "2027-03-20",
   },
   {
     codigo: "PRD-0305",
@@ -33,6 +41,8 @@ export const produtosEstoque = [
     categoria: "Alimentos",
     fornecedor: "Café do Sul",
     preco: "R$ 14,90",
+    quantidadePorUnidade: "500 g",
+    dataValidade: "2026-10-05",
   },
   {
     codigo: "PRD-0412",
@@ -40,6 +50,8 @@ export const produtosEstoque = [
     categoria: "Higiene",
     fornecedor: "Beleza Natural",
     preco: "R$ 19,90",
+    quantidadePorUnidade: "350 ml",
+    dataValidade: "2027-08-12",
   },
   {
     codigo: "PRD-0520",
@@ -47,6 +59,8 @@ export const produtosEstoque = [
     categoria: "Higiene",
     fornecedor: "SoftPaper",
     preco: "R$ 22,00",
+    quantidadePorUnidade: "12 un.",
+    dataValidade: "",
   },
   {
     codigo: "PRD-0633",
@@ -54,6 +68,8 @@ export const produtosEstoque = [
     categoria: "Alimentos",
     fornecedor: "AgroBrasil",
     preco: "R$ 7,50",
+    quantidadePorUnidade: "900 ml",
+    dataValidade: "2026-09-18",
   },
   {
     codigo: "PRD-0744",
@@ -61,5 +77,7 @@ export const produtosEstoque = [
     categoria: "Limpeza",
     fornecedor: "Limpex",
     preco: "R$ 6,90",
+    quantidadePorUnidade: "1 l",
+    dataValidade: "2027-01-25",
   },
 ];

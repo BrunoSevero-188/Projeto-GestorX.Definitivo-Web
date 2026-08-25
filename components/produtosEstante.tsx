@@ -5,6 +5,8 @@ export const produtosEstante = [
     categoria: "Bebidas",
     fornecedor: "Distribuidora Maxx",
     preco: "R$ 9,50",
+    quantidadePorUnidade: "2 l",
+    dataValidade: "2026-12-01",
   },
   {
     codigo: "EST-0024",
@@ -12,6 +14,8 @@ export const produtosEstante = [
     categoria: "Bebidas",
     fornecedor: "Fornecedora Silva",
     preco: "R$ 2,50",
+    quantidadePorUnidade: "500 ml",
+    dataValidade: "2027-05-10",
   },
   {
     codigo: "EST-0037",
@@ -19,6 +23,8 @@ export const produtosEstante = [
     categoria: "Padaria",
     fornecedor: "Alimentos Bom Preço",
     preco: "R$ 7,90",
+    quantidadePorUnidade: "500 g",
+    dataValidade: "2026-09-02",
   },
   {
     codigo: "EST-0048",
@@ -26,6 +32,8 @@ export const produtosEstante = [
     categoria: "Alimentos",
     fornecedor: "Distribuidora Maxx",
     preco: "R$ 4,30",
+    quantidadePorUnidade: "130 g",
+    dataValidade: "2027-02-14",
   },
   {
     codigo: "EST-0059",
@@ -33,6 +41,8 @@ export const produtosEstante = [
     categoria: "Alimentos",
     fornecedor: "Fornecedora Silva",
     preco: "R$ 6,00",
+    quantidadePorUnidade: "90 g",
+    dataValidade: "2027-01-08",
   },
   {
     codigo: "EST-0063",
@@ -40,6 +50,8 @@ export const produtosEstante = [
     categoria: "Alimentos",
     fornecedor: "Alimentos Bom Preço",
     preco: "R$ 5,50",
+    quantidadePorUnidade: "100 g",
+    dataValidade: "2026-11-20",
   },
   {
     codigo: "EST-0071",
@@ -47,6 +59,8 @@ export const produtosEstante = [
     categoria: "Higiene",
     fornecedor: "Distribuidora Maxx",
     preco: "R$ 3,20",
+    quantidadePorUnidade: "90 g",
+    dataValidade: "",
   },
   {
     codigo: "EST-0088",
@@ -54,5 +68,7 @@ export const produtosEstante = [
     categoria: "Utilidades",
     fornecedor: "Fornecedora Silva",
     preco: "R$ 8,00",
+    quantidadePorUnidade: "2 un.",
+    dataValidade: "",
   },
 ];
