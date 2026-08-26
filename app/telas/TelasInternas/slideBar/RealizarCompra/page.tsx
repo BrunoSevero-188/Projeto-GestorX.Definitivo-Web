@@ -11,9 +11,6 @@ export default function RealizarCompra() {
   const [confirmado, setConfirmado] = useState(false);
 
   function confirmarCompra() {
-    // TODO: quando o fluxo de compra de verdade existir (carrinho, fornecedor,
-    // valores), essa função deve chamar a API de compra. Por enquanto é só
-    // uma confirmação de demonstração.
     setConfirmado(true);
   }
 
