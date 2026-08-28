@@ -1,6 +1,6 @@
 "use client";
 
-import IconButton from "@/components/iconButton/IconButton";
+import { IconButton } from "@/components/iconButton";
 import { Activity, ArrowLeftRight, Boxes, FileText, Package, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import styleSlideBar from "@/ConjuntosCss/TelasCss/SlideBar.module.css";
@@ -14,38 +14,15 @@ interface Props {
   onMonitor?: () => void;
 }
 
-export default function SlideBarEstoque({
-  isOpen,
-  onClose,
-}: Props) {
+export default function SlideBarEstoque({ isOpen, onClose }: Props) {
   const router = useRouter();
 
   if (!isOpen) {
     return null;
   }
 
-  function acessarEstoque() {
-    router.push("/telas/TelasInternas/slideBar/Estoque/AcessarEstoque");
-    onClose();
-  }
-
-  function acessarProduto() {
-    router.push("/telas/TelasInternas/slideBar/Estoque/AcessarProduto");
-    onClose();
-  }
-
-  function acessarMovimentacao() {
-    router.push("/telas/TelasInternas/slideBar/Estoque/Movimentacao");
-    onClose();
-  }
-
-  function acessarRelatorio() {
-    router.push("/telas/TelasInternas/slideBar/Estoque/Relatorio");
-    onClose();
-  }
-
-  function acessarMonitoramento() {
-    router.push("/telas/TelasInternas/slideBar/Estoque/Monitoramento");
+  function navegar(path: string) {
+    router.push(path);
     onClose();
   }
 
@@ -61,11 +38,31 @@ export default function SlideBarEstoque({
           </div>
 
           <nav className={styleSlideBar.containerNavegacao}>
-            <IconButton icon={Boxes} label="Acessar Estoque" onClick={acessarEstoque} />
-            <IconButton icon={Package} label="Acessar Produto" onClick={acessarProduto} />
-            <IconButton icon={ArrowLeftRight} label="Movimentacao" onClick={acessarMovimentacao} />
-            <IconButton icon={FileText} label="Relatorio" onClick={acessarRelatorio} />
-            <IconButton icon={Activity} label="Monitoramento" onClick={acessarMonitoramento} />
+            <IconButton
+              icon={Boxes}
+              label="Acessar Estoque"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Estoque/AcessarEstoque")}
+            />
+            <IconButton
+              icon={Package}
+              label="Acessar Produto"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Estoque/AcessarProduto")}
+            />
+            <IconButton
+              icon={ArrowLeftRight}
+              label="Movimentacao"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Estoque/Movimentacao")}
+            />
+            <IconButton
+              icon={FileText}
+              label="Relatorio"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Estoque/Relatorio")}
+            />
+            <IconButton
+              icon={Activity}
+              label="Monitoramento"
+              onClick={() => navegar("/telas/TelasInternas/slideBar/Estoque/Monitoramento")}
+            />
           </nav>
         </div>
       </div>

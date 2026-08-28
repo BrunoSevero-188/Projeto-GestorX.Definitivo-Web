@@ -109,8 +109,6 @@ export default function TelaPrincipal() {
               <SlideBarContatos isOpen={activeSidebar === "contatos"} onClose={closeSidebar} />
             </ItemIconButtonTelaPrincipal>
 
-            {/* "Realizar Venda" não abre um painel de opções, vai direto
-                pra tela de registro de venda (nota fiscal + pagamento). */}
             <ItemIconButtonTelaPrincipal
               icon={ReceiptText}
               label="Realizar Venda"

@@ -1,6 +1,6 @@
 "use client";
 
-import IconButton from "@/components/iconButton/IconButton";
+import { IconButton } from "@/components/iconButton";
 import { Activity, FileText, Phone, User, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
