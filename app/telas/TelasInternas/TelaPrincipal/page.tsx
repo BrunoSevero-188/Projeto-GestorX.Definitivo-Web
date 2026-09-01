@@ -138,18 +138,21 @@ export default function TelaPrincipal() {
 
         {activeSidebar === "estoque" && (
           <SlideBarEstoque
+          isOpen={true}
             onClose={closeSidebar}
           />
         )}
 
         {activeSidebar === "estante" && (
           <SlideBarEstante
+          isOpen={true}
             onClose={closeSidebar}
           />
         )}
 
         {activeSidebar === "contatos" && (
           <SlideBarContatos
+          isOpen={true}
             onClose={closeSidebar}
           />
         )}
